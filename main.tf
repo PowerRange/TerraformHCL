@@ -35,4 +35,4 @@ resource "aws_autoscaling_group" "worker" {
     preferences {
       min_healthy_percentage = 45
     }
-
+   }
