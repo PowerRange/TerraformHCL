@@ -16,17 +16,13 @@ resource "aws_subnet" "public" {
 
 
 
-resource "aws_autoscaling_group" "example" {
+resource "aws_autoscaling_group" "worker" {
   availability_zones     = ["us-east-1a"]
   desired_capacity       = 3
   max_size               = 5
   min_size               = 2
   healtcheck_check_type  = "EC2"
 
-  launch_template {
-    id      = aws_launch_template.example.id
-    version = aws_launch_template.example.latest_version
-  }
 
   tag {
     key                 = "Key"
@@ -39,6 +35,4 @@ resource "aws_autoscaling_group" "example" {
     preferences {
       min_healthy_percentage = 45
     }
-    triggers = ["tag"]
-  }
-}
+
